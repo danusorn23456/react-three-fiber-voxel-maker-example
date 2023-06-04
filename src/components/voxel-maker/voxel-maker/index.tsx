@@ -1,6 +1,6 @@
 import { OrbitControls } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Block, BlockProps, Ground, HighlighBlock } from "..";
 import { Intersection, Mesh, Object3D, Vector3 } from "three";
 import { Lights } from "../lights";
@@ -74,6 +74,13 @@ function PixelBoard({}: PixelBoardProps) {
     }
   });
 
+  useEffect(function eventMouseClickToWorkingWithPlaceBlockRaycast() {
+    window.addEventListener("click", handlePointDown);
+    return () => {
+      window.removeEventListener("click", handlePointDown);
+    };
+  }, []);
+
   return (
     <>
       <Lights />
@@ -81,7 +88,7 @@ function PixelBoard({}: PixelBoardProps) {
       {blocks?.map((blockProps, index) => (
         <Block key={index} {...blockProps} />
       ))}
-      <Ground name="ground" onPointerDown={handlePointDown} />
+      <Ground name="ground" />
       <OrbitControls />
     </>
   );
