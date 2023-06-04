@@ -11,7 +11,7 @@ function App() {
         marginRight: "auto",
       }}
     >
-      <Canvas shadows="soft" camera={{ position: [0, 10, 10] }}>
+      <Canvas camera={{ position: [0, 15, 15] }}>
         <PixelBoard />
       </Canvas>
     </div>
