@@ -1,8 +1,8 @@
 import { Edges } from "@react-three/drei";
-import { Vector3, useFrame } from "@react-three/fiber";
-import { forwardRef, useImperativeHandle, useRef, useState } from "react";
-import { BasicShadowMap, DoubleSide, Mesh, Side } from "three";
-import { useSpring, animated, config } from "@react-spring/three";
+import { Vector3 } from "@react-three/fiber";
+import { forwardRef, useImperativeHandle, useRef } from "react";
+import { DoubleSide, Mesh, Side } from "three";
+import { useSpring, animated } from "@react-spring/three";
 
 export interface BlockProps {
   name?: string;
