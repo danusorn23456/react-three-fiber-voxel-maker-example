@@ -34,19 +34,12 @@ function PixelBoard({}: PixelBoardProps) {
   }
 
   function handlePointDown() {
-    const intersect = intersectsRef?.current?.[0];
-    if (intersect && highlightBlockRef.current) {
-      console.log(intersect.object.name);
+    if (highlightBlockRef.current) {
       const position = new Vector3()
         .copy(highlightBlockRef.current.position)
         .floor()
         .addScalar(0.5);
 
-      if (intersect.object.name.includes("block") && intersect.face) {
-        console.log(intersect.object.position);
-        position.copy(intersect.object.position);
-        position.add(intersect.face.normal);
-      }
       placeBlock(position);
     }
   }
