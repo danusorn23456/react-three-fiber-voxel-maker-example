@@ -7,7 +7,7 @@ export interface GroundProps extends MeshProps {
 }
 
 function Ground({ name = "ground", ...rest }: GroundProps) {
-  const size = 10;
+  const size = 20;
 
   return (
     <>

@@ -34,19 +34,18 @@ function PixelBoard({}: PixelBoardProps) {
   }
 
   function handlePointDown() {
-    const intersect = intersectsRef?.current?.filter(
-      (intersect) =>
-        intersect.object.name !== "highlight" && intersect.object.name
-    )?.[0];
+    const intersect = intersectsRef?.current?.[0];
     if (intersect && highlightBlockRef.current) {
-      const position = new Vector3().floor().addScalar(0.5);
+      console.log(intersect.object.name);
+      const position = new Vector3()
+        .copy(highlightBlockRef.current.position)
+        .floor()
+        .addScalar(0.5);
 
-      console.log(position);
       if (intersect.object.name.includes("block") && intersect.face) {
+        console.log(intersect.object.position);
         position.copy(intersect.object.position);
         position.add(intersect.face.normal);
-      } else {
-        position.copy(highlightBlockRef.current.position);
       }
       placeBlock(position);
     }
